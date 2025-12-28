@@ -23,3 +23,5 @@ data/
 *.jpg
 *.png
 *.zip
+
+.env

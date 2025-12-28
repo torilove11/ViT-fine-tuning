@@ -19,7 +19,7 @@ def main():
         tokenizer=processor,
     )
 
-    print("학습을 시작합니다.")
+    print("모델 학습을 시작합니다.")
     train_results = trainer.train()
 
     trainer.save_model()
