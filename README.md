@@ -2,7 +2,8 @@
 
 이 프로젝트는 Vision Transformer (ViT) 모델을 Stanford Dogs Dataset에 맞춰 Fine-tuning하여 120종의 강아지 품종을 분류하는 모델을 구축하는 것을 목표로 합니다.
 
-단순한 분류를 넘어, 학습된 모델을 활용하기 위해 Google Gemini 1.5 Flash와 연동한 ****'AI 강아지 관상소' 웹 데모(Gradio)****를 구현하여 End-to-End 파이프라인을 완성했습니다.
+단순한 분류를 넘어, 학습된 모델을 활용하기 위해 Google Gemini와 연동한 'AI 강아지 관상소' 웹 데모(Gradio)를 구현하여 End-to-End 파이프라인을 완성했습니다.
+
 ---
 ### 🎯 프로젝트 목표 (Project Objective)
 - ViT Fine-tuning: ImageNet-21k로 사전 학습된 google/vit-base-patch16-224-in21k 모델을 Downstream Task(견종 분류)에 최적화합니다.
@@ -11,17 +12,17 @@
 - ---
 ### 📊 모델 학습 요약 (Training Summary)
 
-1. Model Architecture
+#### 1. Model Architecture
 - Base Model: google/vit-base-patch16-224-in21k
 - Input Size: 224 x 224 pixels
 - Patch Size: 16 x 16
 
-2. Dataset
+#### 2. Dataset
 - Name: Stanford Dogs Dataset (maurice-fp/stanford-dogs)
 - Classes: 120 Breeds
 - Data Split: Train / Test
 
-3. Hyperparameters
+#### 3. Hyperparameters
 학습 효율과 성능 최적화를 위해 다음과 같은 파라미터를 설정했습니다.
 | Parameter        | Value | Description                     |
 |------------------|-------|---------------------------------|
@@ -33,12 +34,12 @@
 | Precision        | FP16  | 학습 속도 향상을 위한 Mixed Precision 사용 |
 | label smoothing  | 0.1   | 모델의 과잉 확신을 억제하여 일반화 성능 개선       |
 
-4. Data Preprocessing & Augmentation
+#### 4. Data Preprocessing & Augmentation
 일반화 성능을 높이기 위해 학습 데이터에 다양한 변환을 적용했습니다.
 - Train: RandomResizedCrop(224), RandomHorizontalFlip, RandomRotation(15), ColorJitter
 - Test: Resize(256) → CenterCrop(224)
 
-5. Model performance
+#### 5. Model performance
 | Accuracy | Loss   |
 |----------|--------|
 | 88.85%   | 1.1695 |
