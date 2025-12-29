@@ -2,7 +2,7 @@
 
 이 프로젝트는 Vision Transformer (ViT) 모델을 Stanford Dogs Dataset에 맞춰 Fine-tuning하여 120종의 강아지 품종을 분류하는 모델을 구축하는 것을 목표로 합니다.
 
-단순한 분류를 넘어, 학습된 모델을 활용하기 위해 Google Gemini 1.5 Flash와 연동한 ****'AI 강아지 관상소' 웹 데모(Gradio)****를 구현하여 End-to-End 파이프라인을 완성했습니다.
+단순한 분류를 넘어, 학습된 모델을 활용하기 위해 Google Gemini 1.5 Flash와 연동한 **'AI 강아지 관상소' 웹 데모(Gradio)**를 구현하여 End-to-End 파이프라인을 완성했습니다.
 ---
 ### 🎯 프로젝트 목표 (Project Objective)
 - ViT Fine-tuning: ImageNet-21k로 사전 학습된 google/vit-base-patch16-224-in21k 모델을 Downstream Task(견종 분류)에 최적화합니다.
