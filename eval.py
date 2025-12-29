@@ -5,6 +5,7 @@ from src.data import make_dataset
 from src.utils import compute_metrics, collate_fn
 
 def main():
+
     print(f"[{output_dir}] 모델의 성능 평가를 시작합니다.")
     _, val_ds, labels, processor = make_dataset()
 
@@ -31,6 +32,7 @@ def main():
     print("="*30)
     print(f"Accuracy : {metrics['eval_accuracy']:.2%}")
     print(f"Loss     : {metrics['eval_loss']:.4f}")
+    print(f"Inference Time: {metrics['eval_runtime']:.2f} sec")
     print("="*30)
 
 if __name__ == "__main__":

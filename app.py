@@ -30,7 +30,7 @@ def get_dog_physiognomy(image, breed_name):
     1. 말투는 전문 관상가처럼 신뢰감 있으면서도 다정하게(예: ~구나, ~할 상이로다) 작성하세요.
     2. 해당 견종의 신체적 특징(눈매, 귀 모양, 털색 등)을 관상 용어와 연결하세요.
     3. 이 강아지가 주인에게 어떤 복(재물, 건강, 화목 등)을 가져다줄지 마무리 멘트를 작성하세요.
-    4. 분량은 300자 내외로 작성하세요.
+    4. 분량은 200자 내외로 작성하세요.
 
     ### [Few-shot Examples]
 
@@ -60,13 +60,13 @@ def process_step(image):
     if image is None:
         return None, "강아지 사진을 올려주세요."
     
-    pred_label, confidence = predict(image)
+    predictions = predict(image) 
     
-    fortune_telling = get_dog_physiognomy(image, pred_label)
+    # Gemini에게는 1순위 견종만 전송합니다.
+    top_breed = list(predictions.keys())[0]
+    fortune_telling = get_dog_physiognomy(image, top_breed)
     
-    label_result = {pred_label: confidence}
-    
-    return label_result, fortune_telling
+    return predictions, fortune_telling
 
 
 custom_css = """

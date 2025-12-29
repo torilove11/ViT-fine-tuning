@@ -20,9 +20,16 @@ def predict(image: Image.Image):
     
     probs = torch.nn.functional.softmax(outputs.logits, dim=1).squeeze()
     
-    pred_id = probs.argmax().item()
-    raw_label = model.config.id2label[pred_id]
-    pred_label = raw_label.split('-')[-1]
-    confidence = probs[pred_id].item()
+    topk_probs, topk_indices = torch.topk(probs, 3) # 상위 3개 추출
+
+    results = {}
+    for i in range(3):
+        idx = topk_indices[i].item()
+        score = topk_probs[i].item()
     
-    return pred_label, confidence
+        raw_label = model.config.id2label[idx]
+        clean_label = raw_label.split('-')[-1]
+    
+        results[clean_label] = score
+
+    return results
