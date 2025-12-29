@@ -7,6 +7,5 @@ evaluate
 scikit-learn
 numpy
 gradio
-accelerate
-scikit-learn
-tensorboard
+google-generativeai
+python-dotenv
